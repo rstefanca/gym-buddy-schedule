@@ -56,6 +56,86 @@ export type Database = {
         }
         Relationships: []
       }
+      workout_registrations: {
+        Row: {
+          id: string
+          registered_at: string
+          user_id: string
+          workout_id: string
+        }
+        Insert: {
+          id?: string
+          registered_at?: string
+          user_id: string
+          workout_id: string
+        }
+        Update: {
+          id?: string
+          registered_at?: string
+          user_id?: string
+          workout_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "workout_registrations_workout_id_fkey"
+            columns: ["workout_id"]
+            isOneToOne: false
+            referencedRelation: "workouts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      workouts: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          current_participants: number
+          date: string
+          description: string | null
+          duration: number
+          id: string
+          instructor: string
+          location: string
+          max_participants: number
+          time: string
+          title: string
+          type: Database["public"]["Enums"]["workout_type"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          current_participants?: number
+          date: string
+          description?: string | null
+          duration: number
+          id?: string
+          instructor: string
+          location: string
+          max_participants?: number
+          time: string
+          title: string
+          type: Database["public"]["Enums"]["workout_type"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          current_participants?: number
+          date?: string
+          description?: string | null
+          duration?: number
+          id?: string
+          instructor?: string
+          location?: string
+          max_participants?: number
+          time?: string
+          title?: string
+          type?: Database["public"]["Enums"]["workout_type"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -71,6 +151,15 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      workout_type:
+        | "strength"
+        | "cardio"
+        | "hiit"
+        | "yoga"
+        | "pilates"
+        | "flexibility"
+        | "functional"
+        | "crossfit"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -199,6 +288,16 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      workout_type: [
+        "strength",
+        "cardio",
+        "hiit",
+        "yoga",
+        "pilates",
+        "flexibility",
+        "functional",
+        "crossfit",
+      ],
     },
   },
 } as const
