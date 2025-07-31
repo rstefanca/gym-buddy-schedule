@@ -77,9 +77,12 @@ export const WorkoutSchedule = () => {
         </div>
       </section>
 
-      {/* Upcoming Workouts */}
+      {/* Tomorrow's Workouts */}
       <section>
-        <h2 className="text-xl font-semibold mb-4">Tomorrow</h2>
+        <div className="flex items-center gap-2 mb-4">
+          <Calendar className="w-5 h-5 text-primary" />
+          <h2 className="text-xl font-semibold">Tomorrow's Schedule</h2>
+        </div>
         <div className="grid md:grid-cols-2 gap-4">
           {upcomingWorkouts.map((workout, index) => (
             <WorkoutCard key={index} {...workout} />
