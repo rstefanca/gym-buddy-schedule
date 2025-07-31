@@ -1,6 +1,6 @@
-import { Calendar, Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Calendar } from "lucide-react";
 import { WorkoutCard } from "./WorkoutCard";
+import { ScheduleWorkoutDialog } from "./ScheduleWorkoutDialog";
 
 const todayWorkouts = [
   {
@@ -61,10 +61,7 @@ export const WorkoutSchedule = () => {
             Plan and track your fitness journey
           </p>
         </div>
-        <Button variant="workout" className="gap-2">
-          <Plus className="w-4 h-4" />
-          Schedule Workout
-        </Button>
+        <ScheduleWorkoutDialog />
       </div>
 
       {/* Today's Workouts */}
